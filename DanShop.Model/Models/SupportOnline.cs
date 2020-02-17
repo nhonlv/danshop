@@ -32,8 +32,8 @@ namespace DanShop.Model.Models
         [MaxLength(50)]
         public string Facebook { set; get; }
 
-        [MaxLength(50)]
-        public string Status { set; get; }
+        
+        public bool Status { set; get; }
 
         public int? DisplayOrder { set; get; }
     }

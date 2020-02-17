@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DanShop.Model.Models
 {
     [Table("SystemConfigs")]
-    internal class SystemConfig
+    public class SystemConfig
     {
         [Key]
         public int ID { set; get; }

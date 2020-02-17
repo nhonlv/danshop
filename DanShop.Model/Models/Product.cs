@@ -1,7 +1,6 @@
 ﻿using DanShop.Model.Abstract;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
 
 namespace DanShop.Model.Models
 {
@@ -26,7 +25,9 @@ namespace DanShop.Model.Models
         [Required]
         public string Image { set; get; }
 
-        public XElement MoreImage { set; get; }
+        [Column(TypeName = "XML")]
+        public string MoreImage { set; get; }
+
         public decimal Price { set; get; }
         public decimal? PromotionPrice { set; get; }
         public int? Warranty { set; get; }
