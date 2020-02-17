@@ -7,11 +7,12 @@ namespace DanShop.Model.Models
     public class ProductTag
     {
         [Key]
+        [Column(Order = 1)]
         public int ProductID { set; get; }
 
         [Key]
         [MaxLength(50)]
-        [Column(TypeName = "varchar")]
+        [Column(Order = 2, TypeName = "varchar")]
         public string TagID { set; get; }
 
         [ForeignKey("ProductID")]
