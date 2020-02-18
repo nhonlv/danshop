@@ -3,7 +3,7 @@ using DanShop.Model.Models;
 
 namespace DanShop.Data.Repositories
 {
-    public interface IMenuGroupRepository
+    public interface IMenuGroupRepository : IRepository<MenuGroup>
     {
     }
 

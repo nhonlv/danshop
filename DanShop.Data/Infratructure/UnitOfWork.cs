@@ -1,6 +1,6 @@
 ﻿namespace DanShop.Data.Infratructure
 {
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbFactory dbFactory;
         private DanShopDbContext dbContext;

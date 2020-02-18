@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DanShop.Data.Infratructure
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         void Commit();
     }

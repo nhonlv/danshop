@@ -3,7 +3,7 @@ using DanShop.Model.Models;
 
 namespace DanShop.Data.Repositories
 {
-    public interface IOrderDetailRepository
+    public interface IOrderDetailRepository : IRepository<OrderDetail>
     {
     }
 
@@ -12,8 +12,5 @@ namespace DanShop.Data.Repositories
         public OrderDetailRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
-    }
-
-    {
     }
 }

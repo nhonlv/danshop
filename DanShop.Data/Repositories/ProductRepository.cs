@@ -3,7 +3,7 @@ using DanShop.Model.Models;
 
 namespace DanShop.Data.Repositories
 {
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product>
     {
     }
 
