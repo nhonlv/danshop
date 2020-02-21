@@ -7,11 +7,11 @@ namespace DanShop.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory postCategory);
+        PostCategory Add(PostCategory postCategory);
 
         void Update(PostCategory postCaregory);
 
-        void Delete(PostCategory postCategory);
+        PostCategory Delete(PostCategory postCategory);
 
         IEnumerable<PostCategory> GetAll();
 
@@ -31,19 +31,19 @@ namespace DanShop.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-            _postCategoryRepository.Add(postCategory);
+            return _postCategoryRepository.Add(postCategory);
         }
 
-        public void Delete(PostCategory postCategory)
+        public PostCategory Delete(PostCategory postCategory)
         {
-            _postCategoryRepository.Delete(postCategory);
+            return _postCategoryRepository.Delete(postCategory);
         }
 
         public IEnumerable<PostCategory> GetAll()
         {
-            return GetAll();
+            return _postCategoryRepository.GetAll();
         }
 
         public IEnumerable<PostCategory> GetAllByParentId(int parentId)

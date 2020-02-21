@@ -77,7 +77,7 @@ namespace DanShop.Data.Infratructure
             return dbSet.Count(where);
         }
 
-        public IQueryable<T> GetAll(string[] includes = null)
+        public IEnumerable<T> GetAll(string[] includes = null)
         {
             if (includes != null && includes.Count() > 0)
             {
@@ -93,10 +93,19 @@ namespace DanShop.Data.Infratructure
 
         public T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null)
         {
-            return GetAll(includes).FirstOrDefault(expression);
+            if (includes != null && includes.Count() > 0)
+            {
+                var query = dataContext.Set<T>().Include(includes.First());
+                foreach (var include in includes.Skip(1))
+                {
+                    query = query.Include(include);
+                }
+                return query.FirstOrDefault(expression);
+            }
+            return dataContext.Set<T>().FirstOrDefault(expression);
         }
 
-        public virtual IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
+        public virtual IEnumerable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
         {
             if (includes != null && includes.Count() > 0)
             {
@@ -108,7 +117,7 @@ namespace DanShop.Data.Infratructure
             return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
         }
 
-        public virtual IQueryable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 20, string[] includes = null)
+        public virtual IEnumerable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 20, string[] includes = null)
         {
             int skipCount = index * size;
             IQueryable<T> _resetSet;
